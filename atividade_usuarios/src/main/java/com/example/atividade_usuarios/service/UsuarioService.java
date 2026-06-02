@@ -35,7 +35,7 @@ public class UsuarioService {
 		if (usuario.getPassword() == null || usuario.getPassword().isEmpty()) {
 			throw new ParametroUsuarioInvalidoException("Senha vazia");
 		}
-		if (emailExiste(usuario.getEmail())){
+		if (emailExiste(usuario.getEmail())) {
 			throw new ParametroUsuarioInvalidoException("Email já cadastrado");
 		}
 		if (usuario.getId() == 0) {
@@ -58,7 +58,9 @@ public class UsuarioService {
 		String HTML = new String();
 
 		for (Usuario u : listaUsuarios) {
-			HTML += String.format("|\t%s\t|\t%s\t|\t%s\t|<br>", u.getId(), u.getEmail(), u.getPassword());
+			HTML += String.format(
+					"<p class=\"rowItem\">%s</p><p class=\"rowItem\">%s</p><p class=\"rowItem\">%s</p>", u.getId(),
+					u.getEmail(), u.getPassword());
 		}
 
 		return HTML;
